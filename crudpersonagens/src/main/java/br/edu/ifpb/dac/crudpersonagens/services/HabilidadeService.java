@@ -3,21 +3,21 @@ package br.edu.ifpb.dac.crudpersonagens.services;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.edu.ifpb.dac.crudpersonagens.dao.HabilidadeDAO;
 import br.edu.ifpb.dac.crudpersonagens.model.Habilidade;
+import br.edu.ifpb.dac.crudpersonagens.repository.HabilidadeRepository;
 
 @Service
 public class HabilidadeService {
 	
 	@Autowired
-	private HabilidadeDAO habilidadeDAO;
+	private HabilidadeRepository habilidadeDAO;
 	
-	public void create(Habilidade novaHabilidade) {
-		habilidadeDAO.save(novaHabilidade);
+	public Habilidade create(Habilidade novaHabilidade) {
+		return habilidadeDAO.save(novaHabilidade);
 	}
 	
-	public void update(Habilidade habilidadeAtualizado) {
-		habilidadeDAO.save(habilidadeAtualizado);
+	public Habilidade update(Habilidade habilidadeAtualizado) {
+		return habilidadeDAO.save(habilidadeAtualizado);
 	}
 	
 	public List<Habilidade> listAll(){
