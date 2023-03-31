@@ -1,18 +1,14 @@
 package br.edu.ifpb.dac.crudpersonagens.model.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -29,13 +25,12 @@ public class Personagem implements Serializable {
 	private String nome;
 	private String classe;
 	private int hp;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "personagem_id")
-	private Set<Habilidade> habilidades = new HashSet<>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "personagem")
+	private List<Habilidade> habilidades;
 	
 	public Personagem() {
 	}
-	public Personagem(String nome, String classe, int hp, Set<Habilidade> habilidades) {
+	public Personagem(String nome, String classe, int hp, List<Habilidade> habilidades) {
 		this.nome = nome;
 		this.classe = classe;
 		this.hp = hp;
@@ -65,10 +60,10 @@ public class Personagem implements Serializable {
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
-	public Set<Habilidade> getHabilidades() {
+	public List<Habilidade> getHabilidades() {
 		return habilidades;
 	}
-	public void setHabilidades(Set<Habilidade> habilidades) {
+	public void setHabilidades(List<Habilidade> habilidades) {
 		this.habilidades = habilidades;
 	}
 	@Override

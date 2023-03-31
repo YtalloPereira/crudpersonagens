@@ -7,7 +7,14 @@ public class HabilidadeDTO {
 	private int cooldown;
 	private String descricao;
 	private int dano;
+	private long personagemId;
 	
+	public long getPersonagemId() {
+		return personagemId;
+	}
+	public void setPersonagemId(long personagemId) {
+		this.personagemId = personagemId;
+	}
 	public long getId() {
 		return id;
 	}

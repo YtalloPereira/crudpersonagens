@@ -2,7 +2,6 @@ package br.edu.ifpb.dac.crudpersonagens.presentation.dto;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import br.edu.ifpb.dac.crudpersonagens.model.entity.Habilidade;
 
 public class PersonagemDTO {
@@ -11,7 +10,7 @@ public class PersonagemDTO {
 	private String nome;
 	private String classe;
 	private int hp;
-	private Set<Habilidade> habilidades = new HashSet<>();
+	private List<Habilidade> habilidades;
 	
 	public long getId() {
 		return id;
@@ -37,10 +36,10 @@ public class PersonagemDTO {
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
-	public Set<Habilidade> getHabilidades() {
+	public List<Habilidade> getHabilidades() {
 		return habilidades;
 	}
-	public void setHabilidades(Set<Habilidade> habilidades) {
+	public void setHabilidades(List<Habilidade> habilidades) {
 		this.habilidades = habilidades;
 	}
 	

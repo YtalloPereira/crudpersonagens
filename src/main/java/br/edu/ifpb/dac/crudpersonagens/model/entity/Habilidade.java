@@ -3,10 +3,14 @@ package br.edu.ifpb.dac.crudpersonagens.model.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Habilidade implements Serializable {
@@ -23,6 +27,11 @@ public class Habilidade implements Serializable {
 	private int cooldown;
 	private String descricao;
 	private int dano;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "personagem_fk")
+	private Personagem personagem;
+	
 	
 	public Habilidade() {
 		
@@ -64,10 +73,21 @@ public class Habilidade implements Serializable {
 	public void setDano(int dano) {
 		this.dano = dano;
 	}
+	
+	
+	public Personagem getPersonagem() {
+		return personagem;
+	}
+
+	public void setPersonagem(Personagem personagem) {
+		this.personagem = personagem;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(cooldown, dano, descricao, id, nome);
+		return Objects.hash(cooldown, dano, descricao, id, nome, personagem);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -78,13 +98,15 @@ public class Habilidade implements Serializable {
 			return false;
 		Habilidade other = (Habilidade) obj;
 		return cooldown == other.cooldown && dano == other.dano && Objects.equals(descricao, other.descricao)
-				&& id == other.id && Objects.equals(nome, other.nome);
+				&& id == other.id && Objects.equals(nome, other.nome) && Objects.equals(personagem, other.personagem);
 	}
+
 	@Override
 	public String toString() {
 		return "Habilidade [id=" + id + ", nome=" + nome + ", cooldown=" + cooldown + ", descricao=" + descricao
-				+ ", dano=" + dano + "]";
+				+ ", dano=" + dano + ", personagem=" + personagem + "]";
 	}
+
 	
 	
 }

@@ -11,7 +11,7 @@ import br.edu.ifpb.dac.crudpersonagens.presentation.dto.HabilidadeDTO;
 @Service
 public class HabilidadeConverterService {
 	
-	public Habilidade dtoToHabilidade(HabilidadeDTO dto) {
+	 public Habilidade dtoToHabilidade(HabilidadeDTO dto) {
 		if (dto != null) {
 			Habilidade entity = new Habilidade();
 			entity.setId(dto.getId());
@@ -19,7 +19,7 @@ public class HabilidadeConverterService {
 			entity.setCooldown(dto.getCooldown());
 			entity.setDano(dto.getDano());
 			entity.setDescricao(dto.getDescricao());
-			
+		
 			return entity;
 		}
 		throw new IllegalArgumentException("Não foi possível converter pois o objeto é nulo");
@@ -33,6 +33,7 @@ public class HabilidadeConverterService {
 			dto.setCooldown(entity.getCooldown());
 			dto.setDano(entity.getDano());
 			dto.setDescricao(entity.getDescricao());
+			dto.setPersonagemId(entity.getPersonagem().getId());
 			
 			return dto;
 		}
