@@ -1,7 +1,6 @@
 package br.edu.ifpb.dac.crudpersonagens.presentation.controller;
 
 import java.util.List;
-import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import br.edu.ifpb.dac.crudpersonagens.business.service.HabilidadeService;
 import br.edu.ifpb.dac.crudpersonagens.business.service.PersonagemConverterService;
 import br.edu.ifpb.dac.crudpersonagens.business.service.PersonagemService;
-import br.edu.ifpb.dac.crudpersonagens.model.entity.Habilidade;
 import br.edu.ifpb.dac.crudpersonagens.model.entity.Personagem;
 import br.edu.ifpb.dac.crudpersonagens.presentation.dto.PersonagemDTO;
-import br.edu.ifpb.dac.crudpersonagens.presentation.dto.PersonagemDTOSkillReference;
 
 @RestController
 @RequestMapping("/api/personagem")

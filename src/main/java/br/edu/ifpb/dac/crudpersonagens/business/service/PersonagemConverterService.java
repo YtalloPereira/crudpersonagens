@@ -3,10 +3,8 @@ package br.edu.ifpb.dac.crudpersonagens.business.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
-
 import br.edu.ifpb.dac.crudpersonagens.model.entity.Personagem;
 import br.edu.ifpb.dac.crudpersonagens.presentation.dto.PersonagemDTO;
-import br.edu.ifpb.dac.crudpersonagens.presentation.dto.PersonagemDTOSkillReference;
 
 @Service
 public class PersonagemConverterService {
@@ -35,24 +33,6 @@ public class PersonagemConverterService {
 			
 			
 			return dto;
-		}
-		throw new IllegalArgumentException("Não foi possível converter pois o objeto é nulo");
-	}
-	
-	public PersonagemDTOSkillReference personagemToDtoSkillReference(Personagem entity) {
-		if(entity != null) {
-			PersonagemDTOSkillReference dto = new PersonagemDTOSkillReference();
-			dto.setId(entity.getId());
-			return dto;
-		}
-		throw new IllegalArgumentException("Não foi possível converter pois o objeto é nulo");
-	}
-	
-	public Personagem dtoSkillReferenceToPersonagem(PersonagemDTOSkillReference dto) {
-		if(dto != null) {
-			Personagem entity = new Personagem();
-			entity.setId(dto.getId());
-			return entity;
 		}
 		throw new IllegalArgumentException("Não foi possível converter pois o objeto é nulo");
 	}
