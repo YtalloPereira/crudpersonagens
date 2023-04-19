@@ -2,14 +2,16 @@ package br.edu.ifpb.dac.crudpersonagens.business.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.edu.ifpb.dac.crudpersonagens.model.entity.Habilidade;
 import br.edu.ifpb.dac.crudpersonagens.presentation.dto.HabilidadeDTO;
 
 @Service
 public class HabilidadeConverterService {
+	
+	@Autowired
+	PersonagemService controllerPersonagem;
 	
 	 public Habilidade dtoToHabilidade(HabilidadeDTO dto) {
 		if (dto != null) {
@@ -19,7 +21,8 @@ public class HabilidadeConverterService {
 			entity.setCooldown(dto.getCooldown());
 			entity.setDano(dto.getDano());
 			entity.setDescricao(dto.getDescricao());
-		
+			entity.setPersonagem(controllerPersonagem.getById(dto.getPersonagemId()));
+			
 			return entity;
 		}
 		throw new IllegalArgumentException("Não foi possível converter pois o objeto é nulo");
