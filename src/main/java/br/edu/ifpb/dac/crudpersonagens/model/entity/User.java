@@ -21,7 +21,7 @@ public class User implements UserDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String nome;
 	private String email;
 	private String senha;
@@ -39,7 +39,7 @@ public class User implements UserDetails {
 		this.senha = senha;
 		this.roles = roles;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(long id) {
