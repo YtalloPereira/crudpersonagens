@@ -1,14 +1,18 @@
 package br.edu.ifpb.dac.crudpersonagens.business.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 
 import br.edu.ifpb.dac.crudpersonagens.model.entity.User;
 
 public class AuthenticationServiceImpl implements AuthenticationService{
+	
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private TokenService tokenService;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 	
 	
 	
