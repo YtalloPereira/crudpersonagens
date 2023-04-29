@@ -20,29 +20,31 @@ public class TokenFilter extends OncePerRequestFilter{
 	private TokenService tokenService;
 	private UserService userService;
 	
+
+	public TokenFilter(TokenService tokenService, UserService UserService) {
+		super();
+		this.tokenService = tokenService;
+		this.userService = UserService;
+	}
+	
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-
+		
 		String token = tokenService.get((javax.servlet.http.HttpServletRequest) request);
-		// TODO tratamento para exceções do método "doFilterInternal" ?
-		if (tokenService.isValid(token)) {
-			try {
-				authenticate(token);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		boolean valid = tokenService.isValid(token);
+	
+		if(valid) {
+			authenticate(token);
 		}
-
+		
 		filterChain.doFilter(request, response);
 		
 	}
 	
 	// coloca o usuário autenticado no contexto do Spring Security
-	private void authenticate(String token) throws NumberFormatException, Exception {
+	private void authenticate(String token) {
 		Long userId = tokenService.getUserId(token);
 		//TODO comportamento inesperado de User: o retorno da linha abaixo é uma exceção
 		User user = userService.findById(userId);
